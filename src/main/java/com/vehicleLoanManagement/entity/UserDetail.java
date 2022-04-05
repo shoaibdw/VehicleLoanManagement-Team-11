@@ -98,7 +98,7 @@ public class UserDetail {
 	}
 	public UserDetail() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	
