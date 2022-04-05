@@ -13,7 +13,7 @@ public class AdminDetailService {
 	AdminDetailRepo adminDetailRepo;
 	public int enterDetail(AdminDetailRequest adminDetailRequest) {
 		AdminDetail adminDetail= new AdminDetail();
-		adminDetail.setAdminEmail(adminDetailRequest.getAdminEmail());
+		adminDetail.setAmdinEmail(adminDetailRequest.getAmdinEmail());
 		adminDetail.setAdminPassword(adminDetailRequest.getAdminPassword());
 		adminDetail.setAdminFullName(adminDetailRequest.getAdminFullName());
 		adminDetailRepo.save(adminDetail);

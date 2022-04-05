@@ -7,14 +7,14 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdminDetailRequest {
-	private String adminEmail;
+	private String amdinEmail;
 	private String adminFullName;
 	private String adminPassword;
-	public String getAdminEmail() {
-		return adminEmail;
+	public String getAmdinEmail() {
+		return amdinEmail;
 	}
-	public void setAdminEmail(String adminEmail) {
-		this.adminEmail = adminEmail;
+	public void setAmdinEmail(String amdinEmail) {
+		this.amdinEmail = amdinEmail;
 	}
 	public String getAdminFullName() {
 		return adminFullName;

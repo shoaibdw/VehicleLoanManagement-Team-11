@@ -1,6 +1,7 @@
 package com.vehicleLoanManagement.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -10,13 +11,13 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-
 @Table(name="login_detail")
 public class LoginDetail {
 	
-	String email;
-	String password;
-	String loginType;
+	@Id
+	 private String email;
+	private String password;
+	private String loginType;
 	
 	public String getEmail() {
 		return email;
