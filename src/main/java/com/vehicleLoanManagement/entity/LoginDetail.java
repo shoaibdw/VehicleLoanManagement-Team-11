@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class LoginDetail {
 	
 	@Id
-	 private String email;
+	private String email;
 	private String password;
 	private String loginType;
 	

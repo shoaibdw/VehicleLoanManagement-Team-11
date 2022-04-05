@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/login")
+public class LoginDetailController {
 
 }
