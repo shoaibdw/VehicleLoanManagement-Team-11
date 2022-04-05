@@ -10,12 +10,14 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
+
 @Table(name="login_detail")
 public class LoginDetail {
 	
 	String email;
 	String password;
 	String loginType;
+	
 	public String getEmail() {
 		return email;
 	}

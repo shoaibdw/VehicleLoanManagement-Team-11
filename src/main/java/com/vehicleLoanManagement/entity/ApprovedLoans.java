@@ -1,6 +1,7 @@
 package com.vehicleLoanManagement.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,14 +13,15 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name="approved_loans")
 public class ApprovedLoans {
-	int approvedLoanId;
+	@Id
+	Long approvedLoansId;
 
-	public int getApprovedLoanId() {
-		return approvedLoanId;
+	public Long getApprovedLoansId() {
+		return approvedLoansId;
 	}
 
-	public void setApprovedLoanId(int approvedLoanId) {
-		this.approvedLoanId = approvedLoanId;
+	public void setApprovedLoansId(Long approvedLoansId) {
+		this.approvedLoansId = approvedLoansId;
 	}
 	
 }
