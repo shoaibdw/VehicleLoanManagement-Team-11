@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Entity
 @Table(name="user_registration")
 public class UserRegistration {
+	
 	@Id
 	private String userEmail;
 	private String userPassword;
@@ -67,4 +68,10 @@ public class UserRegistration {
 		this.userAge = userAge;
 		this.userPhoneNumber = userPhoneNumber;
 	}
+	
+	public UserRegistration() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 }
+
