@@ -36,7 +36,7 @@ public class AdminController {
         return  new ResponseEntity<AdminDetail>(admin, HttpStatus.OK);
  
 	}
-		//GET ADMIN BY EMAIL
+		//GET ADMIN BY EMAILs
     @GetMapping("/byemail")
     public Optional<AdminDetail> getAdminByEmail(@RequestParam String adminEmail) throws RecordNotFoundException{
         return adminDetailService.getAdminByEmail(adminEmail);
