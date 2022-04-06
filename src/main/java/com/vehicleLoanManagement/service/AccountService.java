@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.logging.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.vehicleLoanManagement.Interface.AccountInterface;
@@ -11,23 +12,28 @@ import com.vehicleLoanManagement.controller.UserDetailController;
 import com.vehicleLoanManagement.entity.Account;
 import com.vehicleLoanManagement.exception.RecordNotFoundException;
 import com.vehicleLoanManagement.repository.AccountRepo;
+import com.vehicleLoanManagement.repository.UserRegistrationRepo;
+import com.vehicleLoanManagement.response.APIResponse;
 
 import java.util.List;
 //import ch.qos.logback.classic.Logger;
 
 @Service
-public class AccountService implements AccountInterface {
+public class AccountService  {
 	   public static Logger log = Logger.getLogger(UserDetailController.class.getName());
 	    @Autowired
 	    private AccountRepo accountRepo;
+	    
+	    @Autowired
+	    UserRegistrationRepo userRepo;
 
 	 
 
 	    //Getting Account By Email
-	    @Override
-	    public Account getAccountByEmail(String email) throws RecordNotFoundException{
+	    
+	    public ResponseEntity<APIResponse> getAccountByEmail(String email) {
 
-	 
+	 userRepo.findByEmail(email);
 
 	        log.info("Service Layer - Entry - AccountDetails");
 	        Optional<Account> account=Optional.of(accountRepo.getByEmail(email));
@@ -36,7 +42,7 @@ public class AccountService implements AccountInterface {
 	            throw new RecordNotFoundException("Record doesn't exist");
 	        }
 	        log.info("Service Layer - Exit - AccountDetails");
-	        return account.get();
+	        return ResponseEntity.ok(new APIResponse("Success", "", userRepo.findByEmail(email);));
 	    }
 	    
 	    //Adding Account
