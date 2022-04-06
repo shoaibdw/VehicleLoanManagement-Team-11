@@ -10,10 +10,9 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Entity
-@Table(name="admin_detail")
+
 public class AdminDetailRequest {
-	@Id
+
 	private String adminEmail;
 	private String adminFullName;
 	private String adminPassword;

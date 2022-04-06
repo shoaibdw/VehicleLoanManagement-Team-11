@@ -18,24 +18,39 @@ import com.vehicleLoanManagement.service.AccountService;
 
 import java.util.List;
 
-@RequestMapping("/account")
+//@RequestMapping("/account")
 @RestController
 @CrossOrigin
 public class AccountController {
 
-	@Autowired
-	AccountService accountService;
+<<<<<<< HEAD
+	
+//	@GetMapping(value="/hi")
+//    public String sayHello() {
+//        System.out.println("heelo........");
+//        return "";
+//    }
+/*	 @GetMapping("/findacc")
+	    public ResponseEntity<Account> findAccount( @PathVariable("email")String email) throws RecordNotFoundException{
+	        Account account= accountService.getAccountByEmail(email);
+	        return new ResponseEntity<Account>(account, HttpStatus.OK);
+	        
+	    }*/
+=======
+	//@Autowired
+	//AccountService accountService;
 	@GetMapping(value="/hi")
     public String sayHello() {
         System.out.println("heelo........");
         return "";
     }
-	 @GetMapping("/findacc")
-	    public ResponseEntity<Account> findAccount( @PathVariable("email")String email) throws RecordNotFoundException{
-	        Account account= accountService.getAccountByEmail(email);
-	        return new ResponseEntity<Account>(account, HttpStatus.OK);
-	        
-	    }
+//	 @GetMapping("/findacc")
+//	    public ResponseEntity<Account> findAccount( @PathVariable("email")String email) throws RecordNotFoundException{
+//	        Account account= accountService.getAccountByEmail(email);
+//	        return new ResponseEntity<Account>(account, HttpStatus.OK);
+//	        
+//	    }
+>>>>>>> b9399b86313c200e498d23e45041e274c2ea89a4
 //	    @PostMapping("/insert")
 //	    public ResponseEntity<List<Account>> insertAccount( @RequestBody Account account) throws RecordNotFoundException{
 //	        List<Account> account=accountService.AddAccount(account);

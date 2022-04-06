@@ -21,7 +21,14 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Table(name="account")
 public class Account {
 	
-
+		@Id
+	    private Long accountNumber;
+		
+//		 //Validation of UserId
+//		@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+//		@JoinColumn(name="user_id")
+//		private UserDetail userId;
+		
 	private Long userDetailId;
 	
 	public Long getAccountNumber() {
@@ -47,15 +54,6 @@ public class Account {
 	}
 	
 
-	//Validation of accountNo
-	@Id
-	@Column(name="account_number")
-    private Long accountNumber;
-	
-	 //Validation of UserId
-	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
-	private UserDetail userId;
 	
 
 }

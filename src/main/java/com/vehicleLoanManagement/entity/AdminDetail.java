@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class AdminDetail {
 
 	@Id
-	@JsonProperty(" adminEmail")
+	@Column(name="admin_email")
 	private String adminEmail;
 	private String adminFullName;
 	private String adminPassword;
