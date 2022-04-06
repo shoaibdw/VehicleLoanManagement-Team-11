@@ -24,10 +24,6 @@ public class Account {
 		@Id
 	    private Long accountNumber;
 		
-//		 //Validation of UserId
-//		@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-//		@JoinColumn(name="user_id")
-//		private UserDetail userId;
 		
 	private Long userDetailId;
 	

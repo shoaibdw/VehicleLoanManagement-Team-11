@@ -19,7 +19,7 @@ public class UserDetail {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int userId;
+	Long userId;
 	
 	private String userState;
 	private String userCountry;
@@ -29,10 +29,10 @@ public class UserDetail {
 	private String userPanProof;
 	private String userAddressProof;
 	private String userCity;
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getUserState() {
@@ -83,7 +83,7 @@ public class UserDetail {
 	public void setUserCity(String userCity) {
 		this.userCity = userCity;
 	}
-	public UserDetail(int userId, String userState, String userCountry, Long userPincode, Long userSalary,
+	public UserDetail(Long userId, String userState, String userCountry, Long userPincode, Long userSalary,
 			String userAadharProof, String userPanProof, String userAddressProof, String userCity) {
 		super();
 		this.userId = userId;

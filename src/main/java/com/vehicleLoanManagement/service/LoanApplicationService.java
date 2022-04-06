@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 import com.vehicleLoanManagement.repository.LoanApplicationRepo;
 import com.vehicleLoanManagement.repository.UserDetailRepo;
 import com.vehicleLoanManagement.exception.RecordNotFoundException;
+import com.vehicleLoanManagement.Interface.LoanApplicationInterface;
 import com.vehicleLoanManagement.entity.LoanApplication;
 import com.vehicleLoanManagement.entity.UserDetail;
 
 @Service
-public class LoanApplicationService  {
+public class LoanApplicationService  implements LoanApplicationInterface {
 
 	@Autowired
 	private LoanApplicationRepo loansRepo;
@@ -55,7 +56,7 @@ public class LoanApplicationService  {
 		if (loanApp == null) {
 			throw new RecordNotFoundException("Loan Application Not Found");
 		} else if ((loansRepo.findById(loanApp.getChassisNo())) != null) {
-			double sal = loanApp.getUser().getSalary();
+			double sal = loanApp.getUserDetail().getUserSalary();
 
 			if (loanApp.getAmount() < sal * 2
 					|| (loanApp.getExistingEMI() < (loanApp.getAmount() / (loanApp.getTenure() * 12)))) {
@@ -72,13 +73,13 @@ public class LoanApplicationService  {
 
 	// Apply for a loan
 	@Override
-	public Optional<List<LoanApplication>> applyLoan(LoanApplication loanApp, int userId) {
+	public Optional<List<LoanApplication>> applyLoan(LoanApplication loanApp, Long userId) {
 
 		if (loanApp == null) {
 			return null;
 		} else {
 			Optional<UserDetail> user = userDetailRepo.findById(userId);
-			loanApp.setUser(user.get());
+			loanApp.setUserDetail(user.get());
 			if (loanApp.getStatus().equalsIgnoreCase("pending") )
 				loansRepo.saveAndFlush(loanApp);
 			return Optional.of(loansRepo.findAll());
