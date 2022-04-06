@@ -1,20 +1,27 @@
 package com.vehicleLoanManagement.request;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table(name="admin_detail")
 public class AdminDetailRequest {
-	private String amdinEmail;
+	@Id
+	private String adminEmail;
 	private String adminFullName;
 	private String adminPassword;
-	public String getAmdinEmail() {
-		return amdinEmail;
+	public String getAdminEmail() {
+		return adminEmail;
 	}
-	public void setAmdinEmail(String amdinEmail) {
-		this.amdinEmail = amdinEmail;
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
 	}
 	public String getAdminFullName() {
 		return adminFullName;
@@ -28,6 +35,13 @@ public class AdminDetailRequest {
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
 	}
+	public AdminDetailRequest(String adminEmail, String adminFullName, String adminPassword) {
+		super();
+		this.adminEmail = adminEmail;
+		this.adminFullName = adminFullName;
+		this.adminPassword = adminPassword;
+	}
+	
 	
 	
 }

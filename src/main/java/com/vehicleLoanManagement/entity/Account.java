@@ -1,6 +1,9 @@
 package com.vehicleLoanManagement.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,27 +21,41 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Table(name="account")
 public class Account {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long accountNumber;
-	
-	
 
+	private Long userDetailId;
+	
 	public Long getAccountNumber() {
 		return accountNumber;
 	}
-
 	public void setAccountNumber(Long accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-
-	
-
+	public Long getUserDetailId() {
+		return userDetailId;
+	}
+	public void setUserDetailId(Long userDetailId) {
+		this.userDetailId = userDetailId;
+	}
+	public Account(Long accountNumber, Long userDetailId) {
+		super();
+		this.accountNumber = accountNumber;
+		this.userDetailId = userDetailId;
+	}
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
+
+	//Validation of accountNo
+	@Id
+	@Column(name="account_number")
+    private Long accountNumber;
+	
+	 //Validation of UserId
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private UserDetail userId;
 	
 
 }

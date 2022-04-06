@@ -2,6 +2,8 @@ package com.vehicleLoanManagement.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,6 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Entity
 @Table(name="user_registration")
 public class UserRegistration {
+	
 	@Id
 	private String userEmail;
 	private String userPassword;
@@ -19,6 +22,10 @@ public class UserRegistration {
 	private String userGender;
 	private int userAge;
 	private String userPhoneNumber;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private UserDetail userDetail;
 	
 	public String getUserEmail() {
 		return userEmail;
@@ -57,6 +64,16 @@ public class UserRegistration {
 	public void setUserPhoneNumber(String userPhoneNumber) {
 		this.userPhoneNumber = userPhoneNumber;
 	}
+	
+	
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+	
+	
 	public UserRegistration(String userEmail, String userPassword, String userFullName, String userGender, int userAge,
 			String userPhoneNumber) {
 		super();
@@ -67,4 +84,20 @@ public class UserRegistration {
 		this.userAge = userAge;
 		this.userPhoneNumber = userPhoneNumber;
 	}
+	public UserRegistration(String userEmail, String userPassword, String userFullName, String userGender, int userAge,
+			String userPhoneNumber, UserDetail userDetail) {
+		super();
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+		this.userFullName = userFullName;
+		this.userGender = userGender;
+		this.userAge = userAge;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userDetail = userDetail;
+	}
+	public UserRegistration() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 }
+

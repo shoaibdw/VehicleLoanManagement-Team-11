@@ -2,6 +2,8 @@ package com.vehicleLoanManagement.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,7 +21,7 @@ public class LoanApplication {
 
 	private Double amount;
 	private Integer tenure;
-	private Double interest=9.19;
+	private Double interest;
 	private String status="PENDING";
 	private Double existingEMI;
 	private String brand;
@@ -28,6 +30,11 @@ public class LoanApplication {
 	private String colour;
 	private Double exShowPrice;
 	private Double onRoadPrice;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private UserDetail userDetail;
+	
 	public int getChassisNo() {
 		return chassisNo;
 	}
@@ -100,6 +107,14 @@ public class LoanApplication {
 	public void setOnRoadPrice(Double onRoadPrice) {
 		this.onRoadPrice = onRoadPrice;
 	}
+	
+	
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
 	public LoanApplication(int chassisNo, Double amount, Integer tenure, Double interest, String status,
 			Double existingEMI, String brand, String model, String vehicleType, String colour, Double exShowPrice,
 			Double onRoadPrice) {
@@ -116,6 +131,26 @@ public class LoanApplication {
 		this.colour = colour;
 		this.exShowPrice = exShowPrice;
 		this.onRoadPrice = onRoadPrice;
+	}
+	
+	
+	public LoanApplication(int chassisNo, Double amount, Integer tenure, Double interest, String status,
+			Double existingEMI, String brand, String model, String vehicleType, String colour, Double exShowPrice,
+			Double onRoadPrice, UserDetail userDetail) {
+		super();
+		this.chassisNo = chassisNo;
+		this.amount = amount;
+		this.tenure = tenure;
+		this.interest = interest;
+		this.status = status;
+		this.existingEMI = existingEMI;
+		this.brand = brand;
+		this.model = model;
+		this.vehicleType = vehicleType;
+		this.colour = colour;
+		this.exShowPrice = exShowPrice;
+		this.onRoadPrice = onRoadPrice;
+		this.userDetail = userDetail;
 	}
 	public LoanApplication() {
 		super();
