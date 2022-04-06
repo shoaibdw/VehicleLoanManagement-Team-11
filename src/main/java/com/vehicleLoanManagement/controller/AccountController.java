@@ -16,6 +16,7 @@ import com.vehicleLoanManagement.entity.Account;
 import com.vehicleLoanManagement.exception.RecordNotFoundException;
 import com.vehicleLoanManagement.service.AccountService;
 
+
 import java.util.List;
 
 @RequestMapping("/account")
@@ -23,7 +24,7 @@ import java.util.List;
 @CrossOrigin
 public class AccountController {
 	 @Autowired
-	    public AccountService Service;    
+	    public AccountService accountService;    
 	    @GetMapping(value="/hi")
 	    public String sayHello() {
 	        System.out.println("heelo........");
@@ -31,19 +32,19 @@ public class AccountController {
 	    }
 	    @GetMapping("/accounts/{email}")
 	    public ResponseEntity<Account> findAccount( @PathVariable("email")String email) throws RecordNotFoundException{
-	        Account accounts= Service.getAccountByEmail(email);
+	        Account accounts= accountService.getAccountByEmail(email);
 	        return new ResponseEntity<Account>(accounts, HttpStatus.OK);
 	        
 	    }
 	    @PostMapping("/accounts")
 	    public ResponseEntity<List<Account>> insertAccount( @RequestBody Account account) throws RecordNotFoundException{
-	        List<Account> accounts=Service.AddAccount(account);
+	        List<Account> accounts=accountService.AddAccount(account);
 	        return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	    }
 	    
 	    @PutMapping("/accounts/{accountNo}")
 	   public ResponseEntity<List<Account>> updateAccount(@PathVariable("accountNo")@RequestBody Account account) throws RecordNotFoundException{
-	        List<Account> accounts= Service.UpdateAccount(account);
+	        List<Account> accounts= accountService.UpdateAccount(account);
 	        return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	    }
 }
