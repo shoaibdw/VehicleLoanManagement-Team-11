@@ -10,7 +10,7 @@ import com.vehicleLoanManagement.entity.Account;
 
 @Repository
 public interface AccountRepo extends JpaRepository<Account,Long>{
-	//@Query("Select a from AccountEntity a where a.user.userId=(Select u.userdetails.userId from UserRegistrationEntity u where u.email=:email)")
+	//@Query("Select a from Account a where a.user.userId=(Select u.userdetails.userId from UserRegistrationEntity u where u.email=:email)")
 
 	 public Account getByEmail(@Param("email") String email);
 }

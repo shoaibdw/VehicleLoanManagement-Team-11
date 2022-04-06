@@ -33,16 +33,16 @@ public class AccountService  {
 	    
 	    public ResponseEntity<APIResponse> getAccountByEmail(String email) {
 
-	 userRepo.findByEmail(email);
-
-	        log.info("Service Layer - Entry - AccountDetails");
-	        Optional<Account> account=Optional.of(accountRepo.getByEmail(email));
-	        if(!account.isPresent()) {
-	            log.warning("WARN: Account Should not be empty");
-	            throw new RecordNotFoundException("Record doesn't exist");
-	        }
-	        log.info("Service Layer - Exit - AccountDetails");
-	        return ResponseEntity.ok(new APIResponse("Success", "", userRepo.findByEmail(email);));
+//	 userRepo.findByEmail(email);
+//
+//	        log.info("Service Layer - Entry - AccountDetails");
+//	        Optional<Account> account=Optional.of(accountRepo.getByEmail(email));
+//	        if(!account.isPresent()) {
+//	            log.warning("WARN: Account Should not be empty");
+//	            throw new RecordNotFoundException("Record doesn't exist");
+//	        }
+//	        log.info("Service Layer - Exit - AccountDetails");
+	        return ResponseEntity.ok(new APIResponse("Success", "", userRepo.findByEmail(email)));
 	    }
 	    
 	    //Adding Account
