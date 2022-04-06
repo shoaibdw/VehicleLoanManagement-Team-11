@@ -10,7 +10,7 @@ public interface LoanApplicationInterface {
 	public List<LoanApplication> showAllLoanApplicationByEmail( String email) throws RecordNotFoundException;	
 	public List<LoanApplication> showRejectedLoansByEmail(String email) throws RecordNotFoundException ;
 	public List<LoanApplication> modifyLoanApplicationStatus(LoanApplication loanapp) throws RecordNotFoundException;
-	public Optional<List<LoanApplication>> applyLoan(LoanApplication loanapp,int userId);
+	public Optional<List<LoanApplication>> applyLoan(LoanApplication loanapp,Long userId);
 	public Optional<LoanApplication> showLoanApplicationByChassis(String chassisNo) throws RecordNotFoundException;
 	public List<LoanApplication> showAllLoanApplications() throws RecordNotFoundException;
 	public List<LoanApplication> getAllPendingLoans() throws RecordNotFoundException;

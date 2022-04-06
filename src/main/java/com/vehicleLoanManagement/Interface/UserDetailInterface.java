@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.vehicleLoanManagement.entity.UserDetail;
 import com.vehicleLoanManagement.exception.RecordNotFoundException;
+import com.vehicleLoanManagement.request.UserDetailRequest;
 
 public interface UserDetailInterface {
-	 public List<UserDetail> addUserDetails(UserDetail useradvanced, String email) throws RecordNotFoundException;//userDao
-	    public UserDetail showUserDetailsInformationByUserId(int userId) throws RecordNotFoundException;//userDao
-	    public List<UserDetail> editUserDetails(UserDetail user) throws RecordNotFoundException;//userDao
-	    public List<UserDetail> showAllUserDetails() throws RecordNotFoundException;//adminDao
-
+	public UserDetail addUserDetails(String userEmail,UserDetailRequest userDetailRequest) throws RecordNotFoundException;
+	public UserDetail showUserDetailByUserId(Long userId) throws RecordNotFoundException;
+	public UserDetail editUserDetails(Long userId ,UserDetailRequest userdetailRequest) throws RecordNotFoundException;
+	public List<UserDetail> showAllUserDetails() throws RecordNotFoundException;
 }

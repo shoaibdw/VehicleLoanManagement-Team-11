@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LoanApplication {
 	@Id
-	private int chassisNo ;
+	private String chassisNo ;
 
 	private Double amount;
 	private Integer tenure;
@@ -35,10 +35,10 @@ public class LoanApplication {
 	@JoinColumn(name="user_id")
 	private UserDetail userDetail;
 	
-	public int getChassisNo() {
+	public String getChassisNo() {
 		return chassisNo;
 	}
-	public void setChassisNo(int chassisNo) {
+	public void setChassisNo(String chassisNo) {
 		this.chassisNo = chassisNo;
 	}
 	public Double getAmount() {
@@ -115,7 +115,7 @@ public class LoanApplication {
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
-	public LoanApplication(int chassisNo, Double amount, Integer tenure, Double interest, String status,
+	public LoanApplication(String chassisNo, Double amount, Integer tenure, Double interest, String status,
 			Double existingEMI, String brand, String model, String vehicleType, String colour, Double exShowPrice,
 			Double onRoadPrice) {
 		super();
@@ -134,7 +134,7 @@ public class LoanApplication {
 	}
 	
 	
-	public LoanApplication(int chassisNo, Double amount, Integer tenure, Double interest, String status,
+	public LoanApplication(String chassisNo, Double amount, Integer tenure, Double interest, String status,
 			Double existingEMI, String brand, String model, String vehicleType, String colour, Double exShowPrice,
 			Double onRoadPrice, UserDetail userDetail) {
 		super();

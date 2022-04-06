@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vehicleLoanManagement.entity.UserDetail;
@@ -23,36 +24,39 @@ import com.vehicleLoanManagement.service.UserDetailService;
 @CrossOrigin
 @RequestMapping("/userdetail")
 public class UserDetailController {
-	
 	@Autowired
 	UserDetailService userDetailService;
-	
+
 	//add user detail
 	@PostMapping("/add")
-    public ResponseEntity<List<UserDetail>> addUserDetails(@RequestBody UserDetailRequest userDetailRequest) throws RecordNotFoundException{
-       List<UserDetail> users=userDetailService.addUserDetails(userDetailRequest);
-        return new ResponseEntity<List<UserDetail>>(users, HttpStatus.OK);
+	public ResponseEntity<UserDetail> addUserDetails(@RequestParam String userEmail,@RequestBody UserDetailRequest userDetailRequest) throws RecordNotFoundException{
+	UserDetail users=userDetailService.addUserDetails(userEmail,userDetailRequest);
+	return new ResponseEntity<UserDetail>(users, HttpStatus.OK);
 	}
-	
-/*	//update user detail
-	@PutMapping("/usersdetails/{user_id}")
-    public ResponseEntity<List<UserDetailsEntity>> updateUser(@PathVariable("user_id") @RequestBody UserDetailsRequest user) throws RecordNotFoundException{
-        List<UserDetailsEntity> users= Service.editUserDetails(user);
-        return new ResponseEntity<List<UserDetailsEntity>>(users, HttpStatus.OK);
-    }
-	
+
+	//update user detail
+	@PutMapping("/updatedetail")
+	public ResponseEntity<UserDetail> updateUser(@RequestParam Long userId ,@RequestBody UserDetailRequest userDetailRequest) throws RecordNotFoundException{
+	UserDetail users= userDetailService.editUserDetails(userId,userDetailRequest);
+	return new ResponseEntity<UserDetail>(users, HttpStatus.OK);
+	}
+
 	//get user by user id
-	@GetMapping("/userdetails/{user_id}")
-	public ResponseEntity<UserDetailsEntity> findUser(@PathVariable("user_id")Integer userId) throws RecordNotFoundException{
-		UserDetailsEntity user= Service.showUserDetailsInformationByUserId(userId);
-		return new ResponseEntity<UserDetailsEntity>(user, HttpStatus.OK);
+	@GetMapping("/byid")
+	public ResponseEntity<UserDetail> findUser(@RequestParam Long userId) throws RecordNotFoundException{
+	UserDetail user= userDetailService.showUserDetailByUserId(userId);
+	return new ResponseEntity<UserDetail>(user, HttpStatus.OK);
+	}
+
+	//get all user detail
+	@GetMapping("/all")
+	public ResponseEntity<List<UserDetail>> getAllUsers() throws RecordNotFoundException{
+	List<UserDetail> users= userDetailService.showAllUserDetails();
+	return new ResponseEntity<List<UserDetail>>(users, HttpStatus.OK);
 	}
 	
-	//get all user detail
-	@GetMapping("/userdetails")
-    public ResponseEntity<List<UserDetailsEntity>> getAllUsers() throws RecordNotFoundException{
-		List<UserDetailsEntity> users= Service.showAllUserDetails();
-        return new ResponseEntity<List<UserDetailsEntity>>(users, HttpStatus.OK);
-    }*/
+
+	
+
 
 }
