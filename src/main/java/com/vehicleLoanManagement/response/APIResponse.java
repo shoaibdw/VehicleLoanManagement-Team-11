@@ -37,6 +37,11 @@ public class APIResponse {
 	public String toString() {
 		return "APIResponse [status=" + status + ", message=" + message + ", data=" + data + "]";
 	}
+	public APIResponse(String status, String message) {
+		super();
+		this.status = status;
+		this.message = message;
+	}
 	
 	
 
