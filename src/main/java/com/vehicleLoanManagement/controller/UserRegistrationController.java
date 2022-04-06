@@ -37,7 +37,7 @@ public class UserRegistrationController {
 			return ResponseEntity.ok(new APIResponse("failed"," try again"));
 		
 	}
-	
+	//Update the user by email
 	@PutMapping("/update")
 	public ResponseEntity<APIResponse> update(@RequestParam String userEmail,@RequestBody UserRegistrationRequest userRegistrationRequest){
        int i=userRegistrationService.update(userEmail,userRegistrationRequest);
@@ -49,12 +49,13 @@ public class UserRegistrationController {
 		
 	}
 	
+	//Get all user
 	@GetMapping("/alluser")
 	public List<UserRegistration> findAllUser(){
 		return userRegistrationService.findAllUser();
 		
 	}
-	
+	//Get user by email
 	@GetMapping("/byemail")
 	public Optional<UserRegistration> findEmail(@RequestParam String userEmail) {
 		return userRegistrationService.findEmail(userEmail);

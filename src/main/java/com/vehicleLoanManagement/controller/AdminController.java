@@ -30,41 +30,36 @@ public class AdminController {
 	AdminDetailService adminDetailService;
 	
 	//register an admin
-	@PostMapping("/adminregister")
+	@PostMapping("/register")
 	public ResponseEntity<AdminDetail> adminRegister (@RequestBody AdminDetailRequest adminDetailRequest) throws DuplicateRecordException{
 		AdminDetail admin = adminDetailService.adminRegister(adminDetailRequest);
         return  new ResponseEntity<AdminDetail>(admin, HttpStatus.OK);
  
 	}
-	
-
-	//GET ADMIN BY EMAIL
+		//GET ADMIN BY EMAIL
     @GetMapping("/byemail")
-    public Optional<AdminDetail> getAdminByEmail(@RequestParam String amdinEmail) throws RecordNotFoundException {
+    public Optional<AdminDetail> getAdminByEmail(@RequestParam String adminEmail) throws RecordNotFoundException {
         
-        return adminDetailService.getAdminByEmail(amdinEmail);
-        
-        
- }
+        return adminDetailService.getAdminByEmail(adminEmail);
+        }
     
     //UPDATING AN ADMIN
     @PutMapping("/update")
-    public ResponseEntity<AdminDetail> updateAdmin(@RequestParam String amdinEmail,@RequestBody AdminDetailRequest adminDetailRequest) throws RecordNotFoundException
+    public ResponseEntity<AdminDetail> updateAdmin(@RequestParam String adminEmail,@RequestBody AdminDetailRequest adminDetailRequest) throws RecordNotFoundException
     {
         
-        AdminDetail admin = adminDetailService.updateAdmin(amdinEmail,adminDetailRequest);
+        AdminDetail admin = adminDetailService.updateAdmin(adminEmail,adminDetailRequest);
         return new ResponseEntity<AdminDetail>(admin, HttpStatus.OK);
         
     }
-    
     //GET ALL ADMINS
-    @GetMapping("/alladmin")
-    public List<AdminDetail> getAllAdmins() throws RecordNotFoundException{
+    @GetMapping("/all")
+    public ResponseEntity<List<AdminDetail>> getAllAdmins() throws RecordNotFoundException{
         
-       return adminDetailService.getAllAdmins();
- 
+        List<AdminDetail> adminDetail = adminDetailService.findAllAdmins();
+        return new ResponseEntity<List<AdminDetail>>(adminDetail, HttpStatus.OK);
     }
-	
+    
 	
 	
 	

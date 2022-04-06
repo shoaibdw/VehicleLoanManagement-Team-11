@@ -1,10 +1,14 @@
 package com.vehicleLoanManagement.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -16,14 +20,15 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 public class AdminDetail {
 
 	@Id
-	private String amdinEmail;
+	@JsonProperty(" adminEmail")
+	private String adminEmail;
 	private String adminFullName;
 	private String adminPassword;
-	public String getAmdinEmail() {
-		return amdinEmail;
+	public String getAdminEmail() {
+		return adminEmail;
 	}
-	public void setAmdinEmail(String amdinEmail) {
-		this.amdinEmail = amdinEmail;
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
 	}
 	public String getAdminFullName() {
 		return adminFullName;
@@ -37,9 +42,9 @@ public class AdminDetail {
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
 	}
-	public AdminDetail(String amdinEmail, String adminFullName, String adminPassword) {
+	public AdminDetail(String adminEmail, String adminFullName, String adminPassword) {
 		super();
-		this.amdinEmail = amdinEmail;
+		this.adminEmail = adminEmail;
 		this.adminFullName = adminFullName;
 		this.adminPassword = adminPassword;
 	}
@@ -47,6 +52,8 @@ public class AdminDetail {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 	
 	

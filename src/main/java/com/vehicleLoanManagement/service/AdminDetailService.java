@@ -17,10 +17,11 @@ public class AdminDetailService {
 	@Autowired
 	AdminDetailRepo adminDetailRepo;
 	
+	
 	//register an admin
 	public AdminDetail adminRegister(AdminDetailRequest adminDetailRequest)  throws DuplicateRecordException {
 		AdminDetail adminDetail= new AdminDetail();
-		adminDetail.setAmdinEmail(adminDetailRequest.getAmdinEmail());
+		adminDetail.setAdminEmail(adminDetailRequest.getAdminEmail());
 		adminDetail.setAdminPassword(adminDetailRequest.getAdminPassword());
 		adminDetail.setAdminFullName(adminDetailRequest.getAdminFullName());
 		adminDetailRepo.save(adminDetail);
@@ -28,29 +29,23 @@ public class AdminDetailService {
 				}
 	
 	//GET ADMIN BY EMAIL
-    public Optional<AdminDetail> getAdminByEmail(String amdinEmail) throws RecordNotFoundException
+    public Optional<AdminDetail> getAdminByEmail(String adminEmail) throws RecordNotFoundException
     {
  
-    	if(amdinEmail==null) {
+    	if(adminEmail==null) {
     		throw new RecordNotFoundException("Null email entered");
     	}
+		return adminDetailRepo.findById(adminEmail);
    
-    	else {
-        Optional<AdminDetail> admin = adminDetailRepo.findById(amdinEmail);
- 
-       if(admin==null)
-        {
-            
-            throw new RecordNotFoundException("Admin Email not found");
-        }
+    	
         
-        return admin;
+       
     	}
  
-    }
+    
     
   //GET ALL ADMINS
-    public List<AdminDetail> getAllAdmins() throws RecordNotFoundException 
+    public List<AdminDetail> findAllAdmins() throws RecordNotFoundException 
     {
             return adminDetailRepo.findAll();
             
@@ -67,7 +62,7 @@ public class AdminDetailService {
       else {
       
         AdminDetail adminDetail= new AdminDetail();
-		adminDetail.setAmdinEmail(amdinEmail);
+		adminDetail.setAdminEmail(amdinEmail);
 		adminDetail.setAdminPassword(adminDetailRequest.getAdminPassword());
 		adminDetail.setAdminFullName(adminDetailRequest.getAdminFullName());
 		adminDetailRepo.save(adminDetail);
