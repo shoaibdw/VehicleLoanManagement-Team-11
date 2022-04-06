@@ -36,11 +36,7 @@ public class AdminDetailService {
     		throw new RecordNotFoundException("Null email entered");
     	}
 		return adminDetailRepo.findById(adminEmail);
-   
-    	
-        
-       
-    	}
+   }
  
     
     
@@ -52,9 +48,9 @@ public class AdminDetailService {
     }
  
     //UPDATING AN ADMIN
-    public AdminDetail updateAdmin(String amdinEmail,AdminDetailRequest adminDetailRequest) throws RecordNotFoundException
+    public AdminDetail updateAdmin(String adminEmail,AdminDetailRequest adminDetailRequest) throws RecordNotFoundException
     {
-      if(amdinEmail.isEmpty())
+      if(adminEmail.isEmpty())
         {
             
             throw new RecordNotFoundException("Admin Email not found");
@@ -62,7 +58,7 @@ public class AdminDetailService {
       else {
       
         AdminDetail adminDetail= new AdminDetail();
-		adminDetail.setAdminEmail(amdinEmail);
+		adminDetail.setAdminEmail(adminEmail);
 		adminDetail.setAdminPassword(adminDetailRequest.getAdminPassword());
 		adminDetail.setAdminFullName(adminDetailRequest.getAdminFullName());
 		adminDetailRepo.save(adminDetail);

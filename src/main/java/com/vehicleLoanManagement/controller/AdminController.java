@@ -38,8 +38,7 @@ public class AdminController {
 	}
 		//GET ADMIN BY EMAIL
     @GetMapping("/byemail")
-    public Optional<AdminDetail> getAdminByEmail(@RequestParam String adminEmail) throws RecordNotFoundException {
-        
+    public Optional<AdminDetail> getAdminByEmail(@RequestParam String adminEmail) throws RecordNotFoundException{
         return adminDetailService.getAdminByEmail(adminEmail);
         }
     
@@ -54,10 +53,10 @@ public class AdminController {
     }
     //GET ALL ADMINS
     @GetMapping("/all")
-    public ResponseEntity<List<AdminDetail>> getAllAdmins() throws RecordNotFoundException{
+    public List<AdminDetail> getAllAdmins() throws RecordNotFoundException{
         
-        List<AdminDetail> adminDetail = adminDetailService.findAllAdmins();
-        return new ResponseEntity<List<AdminDetail>>(adminDetail, HttpStatus.OK);
+          return adminDetailService.findAllAdmins();
+        
     }
     
 	

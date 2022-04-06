@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.vehicleLoanManagement.entity.UserRegistration;
+import com.vehicleLoanManagement.exception.DuplicateRecordException;
+import com.vehicleLoanManagement.exception.RecordNotFoundException;
 import com.vehicleLoanManagement.repository.UserRegistrationRepo;
 import com.vehicleLoanManagement.request.UserRegistrationRequest;
 
@@ -16,7 +19,8 @@ public class UserRegistrationService {
 	@Autowired
 	UserRegistrationRepo userRegistrationRepo;
 	
-	public int register(UserRegistrationRequest userRegistrationRequest) {
+	//user register
+	public UserRegistration userRegister(UserRegistrationRequest userRegistrationRequest) throws DuplicateRecordException{
 		
 		UserRegistration userRegistration=new UserRegistration();
 		
@@ -31,12 +35,19 @@ public class UserRegistrationService {
 		
 		
 		
-		return 1;
+		return userRegistration;
 		
 	}
 	
-      public int update(String userEmail,UserRegistrationRequest userRegistrationRequest) {
+	//update user
+      public UserRegistration update(String userEmail,UserRegistrationRequest userRegistrationRequest) throws RecordNotFoundException{
 		
+    	  if(userEmail.isEmpty())
+          {
+              
+              throw new RecordNotFoundException("user Email not found");
+          }
+      else {
 		UserRegistration userRegistration=new UserRegistration();
 		
 		userRegistration.setUserEmail(userEmail);
@@ -48,15 +59,20 @@ public class UserRegistrationService {
 		
 		userRegistrationRepo.save(userRegistration);
 		
-		return 1;
+		return userRegistration;
+      }
 		
 	}
-      
-      public List<UserRegistration> findAllUser(){
+      //get all user
+      public List<UserRegistration> findAllUser() throws RecordNotFoundException{
     	 return userRegistrationRepo.findAll();
       }
-	
-      public Optional<UserRegistration> findEmail(String userEmail) {
+      
+	//user by email
+      public Optional<UserRegistration> findEmail(String userEmail) throws RecordNotFoundException{
+    	  
+    	  if(userEmail==null)
+    		  throw new RecordNotFoundException("NullEmail entered");
     	  return userRegistrationRepo.findById(userEmail);
       }
 	

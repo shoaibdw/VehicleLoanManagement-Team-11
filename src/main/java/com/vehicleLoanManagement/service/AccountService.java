@@ -17,17 +17,17 @@ import ch.qos.logback.classic.Logger;
 public class AccountService {
 
 	//public static Logger log = Logger.getLogger(UserDetailController.class.getName());
-	    @Autowired
-	    private AccountRepo accountRepo;
+//	    @Autowired
+//	    private AccountRepo accountRepo;
 
 	 
 
 	    //Getting Account By Email
-	    @Override
+	 /*   @Override
 	    public Account getAccountByEmail(String email) throws RecordNotFoundException{
 
 		   return 
-	    }
+	    }*/
 	    
 //	    //Adding Account
 //	    @Override
